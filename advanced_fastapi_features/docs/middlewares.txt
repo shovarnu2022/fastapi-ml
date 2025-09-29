@@ -1,0 +1,32 @@
+> cross origin resource sharing
+> Allows cross origin requests from browsers
+> Injects the proper headers in the http responses so that compliant browsers will permit or reject those cross origin calls
+> helps declare exactly which external origins, http methods, headers (and even whether credentials/cookies) are allowed.
+
+> allow_origins: which domains are permitted to make browser based requests
+> allow_credentials: whether to let the browser send cookies
+> allow_methods: which actions will be accepted
+> allow_headers: which headers will be accepted
+
+
+Gzip Middleware:
+
+> Used to compress HTTP requests before sending to client
+> reduces the size of data transferred over the network
+> Faster page loads
+> Lower bandwidth usage
+> Improved performance
+
+HTTPSRedirectMiddleware:
+
+> Ensures that all incoming HTTP Requests are automatically redirected to HTTPS
+> Enforcing HTTPS is a modern security standard, which is preferred by many platforms (browsers, Google SEP Ranking)
+
+
+Custom Middleware:
+
+> Define a class for the middleware
+> Implement the dispatch method which contains the logic
+> Register the middleware
+> Add a route to handle requests
+> Run the endpoints
