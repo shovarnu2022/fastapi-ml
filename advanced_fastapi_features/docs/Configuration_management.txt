@@ -1,0 +1,19 @@
+Configuration Management******
+
+> Provides a centralized way to store and access configuration values(ex. api_key, debug)
+
+> Injects these values into FastAPI route handlers using Depends()
+
+> All config values are encapsulate in one place(Settings), improving maintainability
+
+> API Keys, DB URLs, etc. can be loaded here securely
+
+
+When the /config/ endpoint is called:
+
+> FastAPI calls get_settings()
+
+> The result is passed into the get_config function as the settings argument
+
+> The function returns a dictionary containing the api_key
+
