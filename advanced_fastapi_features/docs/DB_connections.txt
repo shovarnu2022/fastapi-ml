@@ -1,0 +1,6 @@
+DB connection is required and must be established before any Db operation is performed
+
+get_db() is a dependency function
+
+Depends(get_db) tells FastAPI to call get_db() before the request and inject the result into the db param
+
