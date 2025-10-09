@@ -1,0 +1,18 @@
+> The main idea is to protect an API route so that only authenticated users with a valid token can access it
+
+> oauth2_scheme is a dependency provided by FastAPI:
+
+  > Extracts the token from Authorization header
+  > Automatically makes the token string available for further use
+
+> decode_token(token) is a placeholder to implement the logic:
+
+  > Validate the token
+  > Decode the token
+  > Return the user data embedded in the token
+
+> get_current_user(): Makes user info available to routes
+
+> Depends(get_current_user): Protects the route - only accessible if authenticated
+
+
