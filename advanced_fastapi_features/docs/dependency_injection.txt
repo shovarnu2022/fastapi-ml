@@ -1,0 +1,29 @@
+Dependency Injection*******
+
+Dependency Injection is a software design pattern that allows objects or functions to receive their dependencies
+from external sources rather than creating them internally
+
+FastAPI uses the Depends class to resolve and inject dependencies automatically
+
+
+Common use cases of dependency injection:
+
+1. DB Connections
+2. Configuration Management
+3. User Authentication
+4. Background task setup
+
+
+Best practices:
+
+Practice                                                       Description
+Keep dependencies pure                                     No side effects; easier to test and reuse
+Use classes for related parameters                         Better structure and organization
+Avoid heavy computation inside dependencies                Keep them fast and efficient
+Use yield for resource management                          Useful for DB sessions, file access, etc.
+Group reusable logic                                       Like authentication, configuration, logging
+Apply dependencies at router/middleware level              For authentication, rate limiting, etc.
+Override dependencies in tests                             Isolate logic and improve test reliability
+
+
+

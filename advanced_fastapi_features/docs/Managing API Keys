@@ -1,0 +1,35 @@
+What is an API Key?
+
+An API Key is like a password for accessing a web service
+It's a long string of letters and numbers that:
+ > Identifies who is making the request
+ > Verifies whether they have permission to access the data/service
+ > Helps the API provider track usage
+
+
+Why do we need API Keys?
+
+1. Authentication and Authorization
+   > To verify that a request id coming from a trusted source
+   > Some APIs have public access, but many restrict data to authenticated users.
+
+
+2. Rate Limiting:
+   > Prevents abuse by limiting how many requests a single user or app can make in a given time
+   > Without API Keys, it's hard to control spam or overload
+
+3. Usage tracking:
+   > Helps the API provider analyze how their service is being used
+   > Enables billing or quota enforcement for paid APIs
+
+
+4. Security
+
+   > Prevents unauthorized access to sensitive data or actions
+   > Can be revoked or rotated if compromised
+
+
+Implementing API Keys with FastAPI via:
+
+> Headers
+> .env

@@ -1,0 +1,129 @@
+What is JWT******
+
+> JWT(Json Web token) is a compact, URL-safe means of representing claims between two parties
+> JWTs allow to validate user identity and protect secure routes without needing to store session state on
+> Commonly used for authentication and information exchange
+
+
+JWT Structure*******
+
+> Header - Metadata (e.g, algorithm used)
+> Payload - Claims like user ID, expiration time, etc.
+> Signature - Ensures token integrity using secret key
+
+
+Installation: Install dependencies required for secure token handling and password hashing
+
+pip install fastapi uvicorn authlib passlib[bcrypt]
+
+> authlib:
+  > Used for building authentication and authorization systems
+  > Implements modern security protocols like OAuth2 and JWT Properly
+  > Eliminates the need to combine multiple packages
+  > Smooth integration with FastAPI, Flask, etc.
+
+> passlib[bcrypt]
+  > Is a password hashing library
+  > Mainly used for securely hashing and verifying passwords
+
+
+> Implementation of JWT Authentication for Login in FastAPI:
+
+> auth.py
+> models.py
+> utils.py
+> main.py
+
+
+
+auth.py>>>>>>
+
+Purpose:
+
+1) This module handles JWT creation and verification
+2) This is the security engine of the application
+3) This is essential for:
+   > Creating access tokens after successful user authentication
+   > Verifying and decoding access tokens to authorize users accessing protected routes
+
+
+models.py>>>>>
+
+Why use UserInDB(User)?
+> reuse username and password fields
+> Add hashed_password for DB logic only
+> Clearly seperate:
+  * What the client sends(User)
+  * What the server works with internally (UserInDB)
+> This structure improves code reusability, security and clarity
+
+
+utils.py>>>>>
+
+Purpose:
+* The purpose of this module is to encapsulate utility functions related to the user data and password hashing/verification
+* Acts as a helper module that makes the codebase more modular and reusable
+
+
+main.py>>>>>
+
+Purpose:
+* Connects all the pieces (auth.py, utils.py, models.py) and defines the API endpoints
+* The login endpoint issues JWT tokens
+* A protected route is created, accessible only with a valid token
+
+Endpoints:
+
+* /token:
+  - This endpoint authenticates the user
+  - Try to fetch the user using get_user()
+  - If not found, raise an error with status code 400
+  - Verify the password using verify_password()
+  - if incorrect, raise an error with status code 400
+
+* /users:
+  - Extracts the token from the Authorization header and injects it into the token parameter
+  - Decodes and validates the JWT
+  - returns the username encoded in the token
+
+
+Execution:
+
+  - Open the swagger UI
+  - Execute the endpoint /token and give the below details:
+    * Username: johndoe
+    * Password: secret123
+  - Save the returned access_token
+  - Click the Authorize button (top-right of Swagger UI) and paste the token
+  - Execute the endpoint /users to receive the username
+
+
+
+Constants:
+
+> SECRET_KEY:
+  * The application's secret key
+  * Must be kept confidential (e.g, in a .env file)
+  * Used to sign tokens
+
+> Algorithm
+  * Speciifies the signing algorithm
+  * HS256 is widely used (HMAC with SHA-256)
+
+> ACCESS_TOKEN_EXPIRE_MINUTES:
+  * Token expiry time (in minutes)
+  * Controls how long a token remains valid
+
+Functions:
+
+> create_access_token:
+  * Generates a JWT access token using user data (typically the username or user ID)
+  * Makes a copy to avoid mutating the original
+  * Encodes and signs the token using the secret and algorithm
+
+> verify_token:
+  * Verifies and decodes a token to extract user identity and check validity
+  * Decodes the token using the secret key and expected algorithm
+  * Raises JoseError of signature or expiry is invalid
+  * Returns the user identifier extracted from token
+
