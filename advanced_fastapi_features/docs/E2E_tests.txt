@@ -1,0 +1,23 @@
+> Simulates real user flows like login, submitting a form, or making a prediction.
+
+> Runs the system as a black box (ie, without knowing internal code)
+
+> May interact with UI, frontned or API
+
+
+When to use ************
+
+> Pre-deployment checks
+> Validating critical user workflows like signup/login/purchase
+> Testing deployment setup and network configurations
+
+
+Summary ******
+
+Types of test            Scope                           Speed                     Exteranl dependencies
+
+Unit test              Individual function/class          Fast                             None
+Integration            Multiple modules/components       Medium                    DB, ML, model, APIs
+E2E                    Entire system                      Slow                     Full environment
+
+
