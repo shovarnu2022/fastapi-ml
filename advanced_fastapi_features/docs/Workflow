@@ -1,0 +1,26 @@
+Workflow
+
+1. User Login and Token Issuing (/token):
+   - The client sends a POST request to with username and password
+   - The app checks if the user exists (get_user from a fake DB)
+   - It verifies the plain password against the stored hashed password (verify_password)
+   - If valid, the app creates a JWT access token (using a secret key and algorithm)
+   - It sends back the token in the response, which the client will use for subsequent requests
+   - This step shows credential verification and token issuance - the core of logging in
+
+
+2. Token Usage for Protected Routes (/users):
+
+   - This endpoint requires a token - it uses Depends(oauth2_scheme) and extracts the token from the Authorization header
+   - The token is verified(verify_token) and decodes the JWT to confirm it's valid and not expired
+   - The username is extracted from the token payload
+   - The endpoint returns info about the current user (in this case, the username)
+   - This step shows token validation and access control - only users with a valid token can access this protected endpoint
+
+
+3. Password Hashing and Verification:
+
+   - User Passwords are never stored or transmitted in plain text
+   - Passwords are hashed (using bcrypt via passlib) when stored
+   - On login, the plain password entered in verified against the stored hash using verify_password
+   - This ensures passwords are kept secure
