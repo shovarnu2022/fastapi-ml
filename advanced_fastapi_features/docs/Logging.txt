@@ -1,0 +1,18 @@
+> Logging is a fundamental debugging practice in development
+> Instead of using print(), we use python's logging module, which is more powerful and configurable
+> Logging helps with:
+
+> Track what part of the app was accessed
+> Log variables and errors
+> Retain logs in files or forward them to monitoring systems
+
+
+Log Levels:
+
+DEBUG: Low-level system information
+INFO: Routing information like successful requests
+WARNING: Something unexpected happened
+ERROR: A serious problem
+CRITICAL: Severe errors that cause premature termination
+
+
