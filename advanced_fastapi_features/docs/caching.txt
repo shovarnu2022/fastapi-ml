@@ -1,0 +1,48 @@
+> Caching is the process of storing a copy of data or computational results in a temporary storage layer
+
+> This is done so that future requests for that same data can be served much faster, without needing to recompute or fetch it
+from the original source
+
+
+Importance******
+
+> Reduces Latency
+
+> Improves performance
+
+> reduces Load on Backend
+
+> Scalability
+
+
+
+Types of caching:
+
+> Client side caching: Done in browsers or frontends using mechanism like HTTP headers (Cache-Control)
+
+> Server side caching: Caching happens on the server using tools like Redis, Memcached, or in-memory dictionaries
+
+> CDN caching: Content delivery networks cache static resources close to users for faster load times
+
+  * A content delivery network (CDN) is a network of geographically distributed servers that work together for content (websites, videos, images, scripts, etc.)
+    to users more efficiently and reliably
+  * Instead of every user fetching content from a single central server (which can be slow or get overload), a CDN caches and serves
+    content from a server that is geographically closer to the user
+  * This reduces latency, speeds up loading times, and improves scalability and availability
+
+
+Key considerations with caching:
+
+* Cache Invalidation: When data changes, how do you ensure the cache is updated? this is a crucial challenge in caching systems
+
+* Caches have limited memory, so older or less-used data must be removed using strategies like:
+
+  - LRU (Least recently used)
+  - LFU (Least frequently used)
+  - FIFO (First in First out)
+
+* Consistency: Make sure cached data doesn't become stale or inconsistent with the source
+
+
+
+
