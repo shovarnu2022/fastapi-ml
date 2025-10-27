@@ -1,0 +1,7 @@
+> Send Requests with headers, payload, methods(GET, POST, PUT, DELETE)
+
+> Inspect responses(status codes, headers, content)
+
+> Helpful in isolation whether issues are in the backend or client
+
+
